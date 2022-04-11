@@ -1,33 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
+import Item from './item'
 import style from './Lista.module.scss'
 
-function Lista(){
-    const tarefas = [{
-        tarefa:"JavaScript",
-        tempo:"01:30:00"
-    },
-    {
-        tarefa:"React",
-        tempo:"02:00:00"
-    },
-    {
-        tarefa:"Java",
-        tempo:"04:00:00"
+
+interface ITarefas{
+    tarefa: string ,
+     tempo: string
     }
-]
+
+function Lista ({ tarefas}: {tarefas: ITarefas[] }){
+    
     return(
         <aside className={style.listaTarefas}>
-            <h2>Estudos do Dia</h2>
+            <h2 onClick={()=>{
+             setTarefas ([...tarefas, {tarefa: "Photoshop", tempo:"01:00:00"}])
+             console.log(tarefas);
+            }
+            }>Estudos do Dia</h2>
             <ul>
                 {tarefas.map((item, index)=>(
-                    <li key={index} className={style.item}>
-                        <h3>{item.tarefa}</h3>
-                        <span>{item.tempo}</span>
-                    </li>
+                    <Item
+                    tarefa={item.tarefa}
+                    tempo={item.tempo}
+                    key={index}
+                    />
                 ))}
             </ul>
         </aside>
-    
     )
 }
 export default Lista
