@@ -6,12 +6,10 @@ class Botao extends React.Component<{children:string, type?: "button" | "submit"
     render(){
         const{type ="button" , onClick} = this.props
 return(
-    <button type={type} className={style.botao} onClick={onClick} >
+    <button type={type} className={style.botao} onClick={onClick}>
         {this.props.children}
     </button>
 )
     }
 }
 export default Botao
-
-
